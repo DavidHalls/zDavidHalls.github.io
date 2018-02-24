@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Guessing Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>  
+            div{
+                background-color: blue;                
+                color: white;
+                margin-left: auto;
+                margin-right: auto;
+                width: 400px;
+                height: 410px;                
+                padding: 1px;                
+                position: relative;
+                top: -1px;
+                box-shadow: 8px 15px orangered;
+                text-shadow: 2px 2px grey;
+                border: 8px groove lightblue;
+                border-radius: 50%;
+            }         
+            div.one{
+                background-color: white;                
+                color: black;
+                margin-left: auto;
+                margin-right: auto;
+                width: 300px;
+                height: 310px;                
+                padding: 1px;                
+                position: relative;
+                top: -1px;
+                box-shadow: 8px 15px orangered;
+                text-shadow: 2px 2px grey;
+                border: 8px groove lightblue;
+            }
+
+
+
+            form{
+                margin-right: auto;
+                margin-left: auto;
+
+            }
+            body{
+                text-align: center; 
+                color:black;                
+            }
+            table{
+                margin-left: auto;
+                margin-right: auto;
+                border-color: blue;  
+                vertical-align: top;                
+            }
+            .button {
+                appearance: button;
+                -moz-appearance: button;
+                -webkit-appearance: button;
+                text-decoration: none; 
+                width: auto;
+                font: menu;                
+                color: buttontext;
+                display: inline-block; 
+                padding: 5px 8px;
+            }
+            a.a:link    {color:black; background-color:transparent; text-decoration:none}
+            visited {color:black; background-color:transparent; text-decoration:none}
+            hover   {color:black; background-color:transparent; text-decoration:none}
+            active  {color:yellow; background-color:transparent; text-decoration:none}
+
+        </style>
+
+        <script>
+            var message = "Hello";
+            var name = prompt('What is your name?');
+            document.write('<h1> ' + message + " " + name + '! Ready to Play?');
+            var theNumber = 0;
+            var thepicturenumber = 0;
+
+            function initialize()
+            {
+                theNumber = Math.floor(Math.random() * 100);
+                document.guessForm.userGuess.focus();//put mouse in field
+                document.guessForm.userGuess.select();//selct all
+                //alert(theNumber);
+            }
+            function checkGuess()
+            {
+                var pic;
+                var userGuess = eval(document.guessForm.userGuess.value);
+                var nGuesses = 0;
+                nGuesses++;
+
+                //alert(userGuess + '   ' + theNumber);
+                if (userGuess === theNumber)
+
+                {
+                    //alert('You got it!');
+                    refreshid = setInterval("changepicture()", 150);
+
+                }
+                else
+                {
+                    if (userGuess > theNumber)
+                    {
+                        //alert('Too high.  Try Again.');
+                        document.guessForm.thepicture.src = "/HomePage/Images/images/high.jpg";
+
+                    }
+                    else
+                    {
+                        //alert('Too Low');
+                        document.guessForm.thepicture.src = "/HomePage/Images/images/low.jpg";
+
+                    }
+                    document.guessForm.userGuess.focus();//put mouse in field
+                    document.guessForm.userGuess.select();//selct all
+                }
+
+            }
+            function changepicture()
+            {
+                if (thepicturenumber === 1)
+                    document.guessForm.thepicture.src = "/HomePage/Images/images/smiley2.jpg";
+                if (thepicturenumber === 2)
+                    document.guessForm.thepicture.src = "/HomePage/Images/images/smiley3.jpg";
+                thepicturenumber = thepicturenumber + 1;
+                if (thepicturenumber > 2)
+                    thepicturenumber = 1;
+            }
+            function stopInterval()
+            {
+                clearInterval(refreshid);
+                initialize();
+                document.guessForm.thepicture.src = "/HomePage/Images/images/thinker.jpg";
+            }
+
+
+        </script>
+    </head>
+    <body onload="initialize()"><br>
+
+        <table cellspacing="15" cellpadding="5">
+            <tbody>
+
+                <tr>
+                    <td><img src="/HomePage/Images/images/shadow.png" width="227" height="222" alt="shadow"/>
+                    </td>
+                    <td><div ><h1>Guessing Game</h1><br>
+                            <form name="guessForm" action="javascript:checkGuess()">
+                                Your Guess: <input type="text" name="userGuess" value="50" size="10" maxlength="2">
+                                <br>
+                                <input type="button" value="Make Your Guess" onClick="checkGuess()"/>
+                                <input type="button" value="Play Again?" onClick="stopInterval()" /><br>
+                                <a href='../' class='a'><input type='button' value='Home'></a>
+                        </div>
+
+                    </td>
+                    <td><img src="/HomePage/Images/images/shadow2.jpg" width="227" height="222" alt="shadow2"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <img src="/HomePage/Images/images/thinker.jpg" alt="the thinker" id="thepicture"/>       
+    </body>
+</html>

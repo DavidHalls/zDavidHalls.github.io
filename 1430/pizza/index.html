@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Curb Side Kings Pizza</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+            body{
+                font-weight:bold;
+                background-color:BLACK;
+                margin-bottom: 15px;
+            }
+            table.one{ 
+                table-layout:fixed;
+                width:90%;
+                margin-left:5%;
+                margin-right:5%;
+                background-color:grey;
+
+
+            }
+            table.two{
+                table-layout:fixed;
+                width:50%;
+                margin-left:25%;
+                margin-right:25%;                
+
+            }
+            td.one{
+                width:30%;                
+            }
+            td.two{
+                background-image: url('/HomePage/Images/images/toppings.bg.png'); 
+                background-repeat: no-repeat;
+                background-size: 100%;
+            }
+            img.logo {
+                position:relative;
+                float: none;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width:  800px;
+                height: 350px;
+                background-position: 100%;
+                background-repeat:   no-repeat;
+                background-size:     cover;
+                z-index: -1;
+            }
+            input[type=submit] {
+                width: 20em;  height: 3em;
+            }
+            input[type=reset] {
+                width: 11em;  height: 3em;
+            }
+
+
+        </style> 
+        <script>
+            function mask(f) {
+                tel = '(';
+                var val = f.value.split('');
+                for (var i = 0; i < val.length; i++) {
+                    if (i == 2) {
+                        val[i] = val[i] + ')'
+                    }
+                    if (i == 5) {
+                        val[i] = val[i] + '-'
+                    }
+                    tel = tel + val[i]
+                }
+                f.value = tel;
+            }
+        </script>
+
+
+    </head>
+    <body>   
+        <img src="/HomePage/Images/images/KINGLOGO.jpg" class='logo' alt=""/>
+
+        <FORM name="pizzaForm" action="mailto:dhalls1@bruinmail.slcc.edu?subject=New order placed today" method="post" enctype="text/plain">
+            <div><table border="4" class='one'>
+                    <tbody>
+                        <tr>
+                            <td class='one'><table align='center' border='1'>                                
+                                    <tbody>
+                                        <tr><center><h2>What can we make for you?</h2></center>
+                                    <td>Name:</td>
+                                    <td><input type="text" name="Name" placeholder="Enter your name" maxlength="25"/></td>
+                        </tr>
+                        <tr>
+                            <td>Address:</td>
+                            <td><input type='text' name="Address" placeholder='Enter your address' ></td>
+                        </tr>
+                        <tr>
+                            <td>Phone:</td>
+                            <td><input type="text" name="Phone#" placeholder='Enter 10 digit phone#' onblur='mask(this)'/></td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td><input type="text" name="Email" placeholder="Enter your Email" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </td>
+
+                <td class='two'><h1><center>TOPPINGS</center></h1><table border="0" class="two" align='center' cellpadding="5">
+                        <thead>
+                            <tr>
+                                <th align="left">Meats</th>
+                                <th align="left">Veggies</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><label><input type="checkbox" name="Pepperoni" value="PR" />Pepperoni</label></td>
+                                <td><label><input type="checkbox" name="GreenPeppers" value="GP" />Green Peppers</label></td>
+                            </tr>
+                            <tr>
+                                <td><label><input type="checkbox" name="Sausage" value="SA" />Sausage</label></td>
+                                <td><label><input type="checkbox" name="Onions" value="ON" />Onions</label></td>
+                            </tr>
+                            <tr>
+                                <td><label><input type="checkbox" name="Salami" value="SM" />Salami</label></td>
+                                <td><label><input type="checkbox" name="Banana Peppers" value="BP" />Banana Peppers</label></td>
+                            </tr>
+                            <tr>
+                                <td><label><input type="checkbox" name="Chicken" value="CK" />Chicken</label></td>
+                                <td><label><input type="checkbox" name="Mushrooms" value="MU" />Mushrooms</label></td>
+                            </tr>
+                            <tr>
+                                <td><label><input type="checkbox" name="Ham" value="HM" />Ham</label></td>
+                                <td><label><input type="checkbox" name="Black Olives" value="BO" />Black Olives</label></td>
+                            </tr>
+                            <tr>
+                                <td><label><input type="checkbox" name="Pork" value="PK" />Pork</label></td>
+                                <td><label><input type="checkbox" name="Green Olives" value="GO" />Green Olives</label></td>
+                            </tr>
+                            <tr>
+                                <td><label><input type="checkbox" name="Beef" value="BF" />Beef</label></td>
+                                <td><label><input type="checkbox" name="Pineapple" value="PA" />Pineapple</label></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><label><input type="checkbox" name="Jalapeno" value="JP" />Jalapeno</label></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><label><input type="checkbox" name="Spinach" value="SP" />Spinach</label></td>                                        
+                            </tr>
+                            <tr></tr>
+                            <tr></tr>
+                            <tr></tr>
+                        </tbody>
+                    </table>
+                </td>
+                </tr>
+                <tr>
+                    <td class='one' align='center'>Choose your Crust&nbsp&nbsp<select name="Crust">
+                            <option value="Thin">Thin Crust</option>
+                            <option value="Regular">Regular Crust</option>
+                            <option value="Deep Dish">Deep Dish Pan</option>
+                        </select><br><br>Size<br>
+                        <label><input type="radio" name="Size" value="Small" />Small</label>
+                        <label><input type="radio" name="Size" value="Medium" />Medium</label>
+                        <label><input type="radio" name="Size" value="Large" />Large</label>
+                        <label><input type="radio" name="Size" value="X-Large" />X-Large</label></td>
+                    <td><center>
+                    <input type="submit" value="Place Order!">                
+                    <input type="reset" value="Start Over?"></center>
+                </td>
+                </tr>   
+                <tr></tr>
+                <tr></tr>
+                </tbody>
+                </table>
+            </div><br><br>        
+            </body>
+            </html>
