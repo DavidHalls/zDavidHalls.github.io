@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+                <link rel="stylesheet" href="/HomePage/2470/Friends/css/bootstrap.min.css" type="text/css">
+                <link rel="stylesheet" href="/HomePage/2470/Friends/css/custom.css" type="text/css">     
+<!--                <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">-->
+        <script>
+            //change on the drop down
+            function drpJSON() {
+
+                var data_file = "FriendsAndFamily.json";
+                var http_request = new XMLHttpRequest();
+
+                try {
+                    // Opera 8.0+, Firefox, Chrome, Safari
+                    http_request = new XMLHttpRequest();
+
+                } catch (e) {
+                    // Internet Explorer Browsers
+                    try {
+                        http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+                            // Something went wrong
+                            alert("Your browser broke!");
+                            return false;
+                        }
+                    }
+                }
+                http_request.onreadystatechange = function () {
+                    if (http_request.readyState == 4) {   
+                        // Javascript function JSON.parse to parse JSON data
+                        var jsonObj = JSON.parse(http_request.responseText); 
+                        // jsonObj variable now contains the data structure and can
+                        // be accessed as jsonObj.name and jsonObj.country.     
+                        var text = "<option value='0'>--------</option>";
+                        var text2 = "<option value='0'>--------</option>";
+                        for (var i = 0; i < jsonObj.people.length; i++) {                        
+                        text = text + "<option id='person' value = '" + jsonObj.people[i].name + "'> " + 
+                            jsonObj.people[i].name + " " + jsonObj.people[i].lname + "</option>";
+                        comp = jsonObj.people[i].relation;
+                        if(text2.indexOf(comp) > -1){
+                            text2 = text2;
+                        }else
+                        text2 = text2 + "<option id='ship' value = '" + jsonObj.people[i].relation + "'> " + jsonObj.people[i].relation + "</option>";                        
+                    }                  
+//                    document.getElementById("NameSel").innerHTML = text;
+                    document.getElementById("relation").innerHTML = text2;
+                        
+                        var text = "";
+                        var lname = "";
+                        var name = "";
+                        var rel = "";
+                        for (var i = 0; i < jsonObj.people.length; i++) {
+                            if (jsonObj.people[i].name == document.getElementById("NameSel").value && document.getElementById("NameSel").value != 0) {
+                                text = text + jsonObj.people[i].lname + " " + jsonObj.people[i].name + "<br>";
+                                rel = rel + jsonObj.people[i].relation + "<br>";
+                                lname = lname + jsonObj.people[i].lname + "<br>";
+                                name = name + jsonObj.people[i].name + "<br>";
+                                var selection = i;
+                                console.log(i);
+                            } else if (jsonObj.people[i].relation == document.getElementById("relation").value && document.getElementById("relation").value != 0) {
+                                text = text + jsonObj.people[i].lname + " " + jsonObj.people[i].name + "<br>";
+                                rel = rel + jsonObj.people[i].relation + "<br>";
+                                lname = lname + jsonObj.people[i].lname + "<br>";
+                                name = name + jsonObj.people[i].name + "<br>";
+                                var selection = i;
+                                console.log(i);
+                                
+                            }
+                        }
+//                        alert(text);
+                        console.log(selection);        
+//                        document.getElementById("ship").innerHTML = text2;
+//                        document.getElementById("famlist").innerHTML = text;
+                        document.getElementById("lname").innerHTML = lname;
+                        document.getElementById("name").innerHTML = name;
+                        document.getElementById("relationship").innerHTML = rel;
+                    }
+                }
+                http_request.open("GET", data_file, true);
+                http_request.send();
+            }
+            function relJSON() {
+
+                var data_file = "FriendsAndFamily.json";
+                var http_request = new XMLHttpRequest();
+                
+                try {
+                    // Opera 8.0+, Firefox, Chrome, Safari
+                    http_request = new XMLHttpRequest();
+
+                } catch (e) {
+                    // Internet Explorer Browsers
+                    try {
+                        http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+                            // Something went wrong
+                            alert("Your browser broke!");
+                            return false;
+                        }
+                    }
+                }
+                http_request.onreadystatechange = function () {
+                    if (http_request.readyState == 4) {   
+                        // Javascript function JSON.parse to parse JSON data
+                        var jsonObj = JSON.parse(http_request.responseText); 
+                        // jsonObj variable now contains the data structure and can
+                        // be accessed as jsonObj.name and jsonObj.country.  
+                        var text = "<option value='0'>--------</option>";
+                        var text2 = "<option value='0'>--------</option>";
+                        for (var i = 0; i < jsonObj.people.length; i++) {                        
+                        text = text + "<option id='person' value = '" + jsonObj.people[i].name + "'> " + 
+                            jsonObj.people[i].name + " " + jsonObj.people[i].lname + "</option>";
+                        comp = jsonObj.people[i].relation;
+                        if(text2.indexOf(comp) > -1){
+                            text2 = text2;
+                        }else
+                        text2 = text2 + "<option id='ship' value = '" + jsonObj.people[i].relation + "'> " + jsonObj.people[i].relation + "</option>";                        
+                    }                   
+                    document.getElementById("NameSel").innerHTML = text;
+//                    document.getElementById("relation").innerHTML = text2;
+                        var text = "";
+                        var lname = "";
+                        var name = "";
+                        var rel = "";
+                        for (var i = 0; i < jsonObj.people.length; i++) {
+                            if (jsonObj.people[i].name == document.getElementById("NameSel").value && document.getElementById("NameSel").value != 0) {
+                                text = text + jsonObj.people[i].lname + " " + jsonObj.people[i].name + "<br>";
+                                rel = rel + jsonObj.people[i].relation + "<br>";
+                                lname = lname + jsonObj.people[i].lname + "<br>";
+                                name = name + jsonObj.people[i].name + "<br>";
+                                var selection = i;
+                                console.log(i);
+                            } else if (jsonObj.people[i].relation == document.getElementById("relation").value && document.getElementById("relation").value != 0) {
+                                text = text + jsonObj.people[i].lname + " " + jsonObj.people[i].name + "<br>";
+                                rel = rel + jsonObj.people[i].relation + "<br>";
+                                lname = lname + jsonObj.people[i].lname + "<br>";
+                                name = name + jsonObj.people[i].name + "<br>";
+                                var selection = i;
+                                console.log(i);
+                                
+                            }
+                        }
+//                        alert(text);
+                        console.log(selection);        
+//                        document.getElementById("ship").innerHTML = text2;
+//                        document.getElementById("famlist").innerHTML = text; 
+//                        document.getElementById("lastname").value = '';
+                        document.getElementById("lname").innerHTML = lname;
+                        document.getElementById("name").innerHTML = name;
+                        document.getElementById("relationship").innerHTML = rel;
+                    }
+                }
+                http_request.open("GET", data_file, true);
+                http_request.send();
+            }
+            
+            //for the writ in element
+            function wrtJSON() {
+
+                var data_file = "FriendsAndFamily.json";
+                var http_request = new XMLHttpRequest();
+
+                try {
+                    // Opera 8.0+, Firefox, Chrome, Safari
+                    http_request = new XMLHttpRequest();
+
+                } catch (e) {
+                    // Internet Explorer Browsers
+                    try {
+                        http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+                            // Something went wrong
+                            alert("Your browser broke!");
+                            return false;
+                        }
+                    }
+                }
+                http_request.onreadystatechange = function () {
+                    if (http_request.readyState == 4) {
+                        
+                        // Javascript function JSON.parse to parse JSON data
+                        var jsonObj = JSON.parse(http_request.responseText); 
+                        var text = "<option value='0'>--------</option>";
+                        var text2 = "<option value='0'>--------</option>";
+                        for (var i = 0; i < jsonObj.people.length; i++) {                        
+                        text = text + "<option id='person' value = '" + jsonObj.people[i].name + "'> " + 
+                            jsonObj.people[i].name + " " + jsonObj.people[i].lname + "</option>";
+                        comp = jsonObj.people[i].relation;
+                        if(text2.indexOf(comp) > -1){
+                            text2 = text2;
+                        }else
+                        text2 = text2 + "<option id='ship' value = '" + jsonObj.people[i].relation + "'> " + jsonObj.people[i].relation + "</option>";                        
+                    } 
+                        
+                    document.getElementById("NameSel").innerHTML = text;
+//                    document.getElementById("relation").innerHTML = text2;
+
+                        // jsonObj variable now contains the data structure and can
+                        // be accessed as jsonObj.name and jsonObj.country.
+                        var lname = "";
+                        var name = "";
+                        var rel = "";
+                        var text = "";
+                        var compare = document.getElementById("relation").value;
+                        var relComp;
+//                        alert(compare);                        
+                            
+                        
+                        for (var i = 0; i < jsonObj.people.length; i++) {                            
+                            if (jsonObj.people[i].lname.indexOf(document.getElementById("lastname").value) > -1 && document.getElementById("lastname").value != "") {
+//                                rel = rel + jsonObj.people[i].value;
+                                if (text.length > 0) {
+                                    text = "";
+                                }  
+                                relComp = jsonObj.people[i].relation;
+                                
+                                
+                                if(compare != 0 && compare != relComp){
+                                    rel = rel;    
+                                    
+                                }else {
+                                text = text + jsonObj.people[i].lname + " " + jsonObj.people[i].lname + "<br>";
+                                rel = rel + jsonObj.people[i].relation + "<br>";
+//                                alert(name);
+                                name = name + jsonObj.people[i].name + "<br>";
+                                lname = lname + jsonObj.people[i].lname + "<br>";
+                                var selection = i;
+                                console.log(i);}                                                                
+                                
+                            }else if (jsonObj.people[i].lname.indexOf(document.getElementById("lastname").value) > -1 ) {
+                                if (text.length > 0) {
+                                    text = "";
+                                }
+                                text = text + jsonObj.people[i].lname + " " + jsonObj.people[i].lname + "<br>";
+                                rel = rel + jsonObj.people[i].relation + "<br>";
+                                name = name + jsonObj.people[i].name + "<br>";
+                                lname = lname + jsonObj.people[i].lname + "<br>";
+                                document.getElementById("relation").innerHTML = text2;
+                                var selection = i;
+                                console.log(i);                            
+                            }
+                        }   
+                        if(lname == ""){
+                                name = "Query returns no matches";
+                                name = "Query returns no matches";
+                            }
+                        console.log(selection);   
+//                        alert(document.getElementById("relation").value);
+//                        document.getElementById("famlist").innerHTML = text;
+                        document.getElementById("lname").innerHTML = lname;
+                        document.getElementById("name").innerHTML = name;
+                        document.getElementById("relationship").innerHTML = rel;
+//                        document.getElementById("relation").innerHTML = text2;
+                        
+                    }
+                }
+                http_request.open("GET", data_file, true);
+                http_request.send();
+            }
+//            end wrtJSON
+            function hasDuplicate(arr){
+    return (arr.length != _.uniq(arr).length);
+}
+        </script>
+        <title>Friend and Family using AJAX & JSON</title>
+    </head>
+    <body>        
+        <div class="container">
+            <div class="navbar nav-fixed-top" style="text-align:center; width:100%"><h1>Friend and Family Contacts</h1></div>
+<!--            <div class="col-sm-12">-->
+            <div class="container">
+<!--            <div id="famlist" style="color:transparent"></div></div>-->
+<!--            <hr style="border:3px solid #67C673 ">-->
+            <div class="central col-sm-2">Select a Contact:<br>
+                Search by Last Name:<br>Search by Relationship:</div>
+            <div class="col-sm-3"> 
+            <select id='NameSel' onchange ="drpJSON()" style="width:60%;">
+            </select><br>
+                    <input type="text" style="width:60%" name="lastname" id="lastname" placeholder="Blank for ALL">
+                    <input type="button" onclick="wrtJSON()" value="Search" >
+               
+            
+                <select id='relation' onchange ="relJSON()" style="width:60%;">  
+                </select>   
+            </div>
+            
+            <div class="col-sm-2">
+                <h3>First Name</h3>
+                <div id="name">None Selected</div>
+            </div>
+                <div class="col-sm-2 famlist">
+                <h3>Last Name</h3>
+                <div id="lname">None Selected</div>
+            </div>
+            <div class="col-sm-2">
+                <h3>Relationship</h3>
+                <div id="relationship">None Selected</div>
+            </div>
+            
+            </div></div>
+        <script>   
+            var data_file = "FriendsAndFamily.json";
+            var http_request = new XMLHttpRequest();
+
+            try {
+                // Opera 8.0+, Firefox, Chrome, Safari
+                http_request = new XMLHttpRequest();
+
+            } catch (e) {
+                // Internet Explorer Browsers
+                try {
+                    http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {
+                        // Something went wrong
+                        alert("Your browser broke!");
+                    }
+                }
+            }
+            
+            http_request.onreadystatechange = function () {
+                if (http_request.readyState == 4) {
+                    // Javascript function JSON.parse to parse JSON data
+                    var jsonObj = JSON.parse(http_request.responseText);
+                    var text = "<option value='0'>--------</option>";
+                    var text2 = "<option value='0'>--------</option>"; 
+                    var comp = "";
+                    for (var i = 0; i < jsonObj.people.length; i++) {                        
+                        text = text + "<option id='person' value = '" + jsonObj.people[i].name + "'> " + 
+                            jsonObj.people[i].name + " " + jsonObj.people[i].lname + "</option>";
+                        comp = jsonObj.people[i].relation;
+                        if(text2.indexOf(comp) > -1){
+                            text2 = text2;
+                        }else
+                        text2 = text2 + "<option id='ship' value = '" + jsonObj.people[i].relation + "'> " + jsonObj.people[i].relation + "</option>";                        
+                    }                   
+                    document.getElementById("NameSel").innerHTML = text;
+                    document.getElementById("relation").innerHTML = text2;
+                }
+            }
+            http_request.open("GET", data_file, true);
+            http_request.send();
+        </script>
+        <div class="navbar navbar-fixed-bottom" style="background:transparent">
+        <div class="container">
+            <div class="navbar-text pull-right">
+            <p id="foot" style="color:#67C673"><script>var d = new Date();
+                document.getElementById("foot").innerHTML = d.toDateString();</script></p>
+    </div>
+        </div>
+    </div>
+    </body>
+</html>

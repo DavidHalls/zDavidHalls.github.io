@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>List of Cool Books</title>
+        <script type="text/javascript" src="BookList.js"></script>
+        <script type="text/javascript" src="jquery-cycle-all.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="main">Things should appear here</div>
+        <script>
+
+            $(document).ready;
+            myFunction(Books);
+            function myFunction(arr) {
+                var things = "List of Cool Books";
+                var i = 0;
+                var len = arr.length;
+                while (i < len) {
+                    things += '<p>' + arr[i].Title + ',  ' +
+                            arr[i].Author;
+                    if (arr[i].Forsale == true) {
+                        things += ', Price :' + arr[i].Price;
+                    }
+                    if (arr[i].Awards instanceof Array) {
+                        things += ', Awards: ';
+                        var awardcount = arr[i].Awards.length;
+                        var k = 0;
+                        while (k < awardcount) {
+                            things += arr[i].Awards[k] + ',';
+                            k++
+                        }
+                        things += '</p>';
+                    } else {
+                        things += '</p>';
+                    }
+                    i++;
+                }
+                document.getElementById("main").innerHTML = things;
+            }
+        </script>
+    </body>
+</html>

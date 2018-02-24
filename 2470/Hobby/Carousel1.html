@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="jquery-cycle-all.js"></script>
+        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+        <script type="text/javascript" src="bookinfo.js"></script>
+        
+             <script type="text/javascript">
+            var html = '';
+            $(document).ready(function () {
+                //console.log('ready');
+                $.getJSON('products.json', function (data) {
+                    //console.log(data);
+                    $.each(data, function (key, value) {
+                        $.each(value, function (index, stuff) {
+                            console.log(index + " " + stuff.Author);
+                            html += '<div  class="books" style="text-align:center">';
+                            html += '<h2 id="title">' + stuff.Title + '</h2>';
+                            html += '<h4>' + stuff.Author + '</h4>';
+                            html += '<p onclick="bookinfo(' + stuff.id + ')" style="text-align:center"><img src="' + stuff.Source + '" style="max-width:100%;max-height:100%;"></p></div>';
+                            
+                        });
+                    });
+                    $('#books').html(html);
+                    //this is the cycle 
+                    $('#books').cycle({
+                        fx: 'curtainX',
+//                        fx: 'growY',
+                        pause: '1',
+                        prev: '#prev',
+                        next: '#next',
+                        speed: 400,
+                        timeout: 10000
+                    });
+                });
+            });
+
+            </script>  
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+    <body style="background-color:lightblue">        
+        <div class="container">
+            <div class="navbar nav-fixed-top navbar-default" style="text-align:center; background-color:orange; color:black;">
+                <h1>Book Carousel</h1>
+            </div>
+            
+        <div class="container">
+            <div class="col-sm-4" style="text-align:right" id="prev"><button class="btn-danger" href="#">Previous</a></div>
+            <div class="col-sm-4" id="books" style="text-align:center" ></div>
+            <div class="col-sm-4" id="next"><button class="btn-danger" href="#">Next</a></div>
+            </div></div>
+    <div class="container">
+    <div id="desc"></div>
+    </div>
+            
+            
+<!--            <div class="col-sm-3">Column 4</div>-->
+<!--        </div>   -->
+<!--
+        <div class="container" style="text-align:center">
+            <div class="container" style="margin-top:50px" >
+-->
+<!--        <div id="main"></div>-->
+<!--
+        <div class="col-sm-12" style="align:center"><table style="width:400px" border="0">
+            <tr>
+                <td><a href="#" id="prev">Previous</a></td>
+                <td style="width:250px; height: 175px"><div id = "books"></div></td>
+                <td><a href="#" id="next">Next</a></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    
+                </td>
+            </tr>
+            </table>   
+-->
+<!--
+        </div>  
+        </div>
+-->
+
+<!--
+<div class="container">
+<div id="prev" class="col-sm-4">Previous</div>
+        <div id="books" class="col-sm-r"></div>
+    
+</div>
+-->
+    
+<!--
+        <div class="container" style="margin-top:50px" >
+        <div id="main">Books Carousel</div>
+        <div class="col-sm-12" style="text-align:center"><table style="width:400px">
+            <tr>
+                <td><a href="#" id="prev">Previous</a></td>
+                <td style="width:250px; height: 175px"><div id = "books"></div></td>
+                <td><a href="#" id="next">Next</a></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    
+                </td>
+            </tr>
+            </table>
+        </div>  
+        </div>
+        </div>
+
+-->
+<!--        <div id="desc"></div>-->
+    </body>
+</html>

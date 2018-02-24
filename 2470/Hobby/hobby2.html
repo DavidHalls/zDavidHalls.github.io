@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="jquery-cycle-all.js"></script>
+        <link rel="stylesheet" href="/HomePage/2470/Hobby/css/bootstrap.min.css" type="text/css">
+<!--        <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">-->
+        <script type="text/javascript" src="hobbies.js"></script>
+        
+             <script type="text/javascript">
+                 
+            var html = '';
+            $(document).ready(function () {
+                //console.log('ready');                
+                $.getJSON('hobby.json', function (data) {
+                    //console.log(data);
+                    $.each(data, function (key, value) {
+                        $.each(value, function (index, stuff) {
+                            console.log(index + " " + stuff.Author);
+                            html += '<div  class="hobbies" style="text-align:center; color:#1E3291">';
+                            html += '<h3 id="title" >' + stuff.Hobby + '</h3>';
+                            html += '<p id="go" onclick="hobbies(' + stuff.id + ')" style="text-align:center" ><img src="' + stuff.Source + '" "></p>                                </div>';
+                            
+                        });
+                    });
+                    $('#hobbies').html(html);
+                    //this is the cycle 
+                    $('#hobbies').cycle({
+                        fx: 'shuffle',
+//                        fx: 'growY',
+                        pause: '4',
+                        prev: '#prev',
+                        next: '#next',
+                        speed: 1400,
+                        timeout: 8000
+                    });
+                });
+            });
+
+            </script>  
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+    <body style="background-color:#7787D1">
+        <section style="height:100px">
+            <div class="container">                
+            <div class="navbar navbar-fixed-top" style="background-color:#1E3291;">
+                <h1 align="center" style="color:#A7B2E7">Hobbies</h1>     
+                </div></section>
+            <section>
+                <div class="container">
+                <div class="col-sm-2" align="center" id="prev"><a href="#" style="color:#1E3291" onclick="change();"><h3>Previous</h3></a></div>
+                <div class="col-sm-4" align="center" id="hobbies" style="text-align:center;" onchange="change();"></div>
+                <div class="col-sm-2" align="center" id="next"><a href="#" style="color:#1E3291" onclick="change();"><h3>Next</h3></a></div>
+                <div class="col-sm-4" align="left" style="color:#1E3291"><h3>Description</h3><div class="desc" id="desc"></div></div>
+            </div>     
+                </div>
+        </section>
+        <div class="navbar navbar-fixed-bottom" style="background:#1E3291">
+        <div class="container">
+            <div class="navbar-text pull-right">
+            <p id="foot" style="color:#A7B2E7"><script>var d = new Date();
+                document.getElementById("foot").innerHTML = d.toDateString();</script></p>
+    </div>
+        </div>
+    </div>
+    </body>
+</html>         
+          
+          
+          
+          
+          
