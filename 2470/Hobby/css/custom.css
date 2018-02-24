@@ -1,0 +1,95 @@
+.navbar-text > a{
+    color: inherit;
+    text-decoration: none;
+}
+
+body{
+    padding-top: 70px;
+}
+
+.navbar-default{
+    background:#2C3E50;
+    color: white;
+    border-color: white;
+}
+
+.navbar-default .navbar-brand{
+    color:white;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus{
+    color: #18BC9C;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color:white;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar.default .navbar-nav > .active > a:focus{
+    color:white;
+    background: #1A242F;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus{
+    color: #18BC9C;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a > a:hover,
+.navbar-default .navbar-nav > .open > a > a:focus{
+    color:white;
+    background-color: #1A242F;
+}
+
+
+.dropdown-toggle:hover{
+    background: #1A242F;
+}
+
+.btn-primary {
+    background: #2C3E50;
+    color: white;
+    border-color: #2C3E50;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus{
+    background: #1E2A36;
+    color:white;
+    border-color: #161F29;
+}
+
+.btn-success {
+    background: #2C3E50;
+    color: white;
+    border-color: #2C3E50;
+}
+
+.btn-success:hover,
+.btn-success:active,
+.btn-success:focus{
+    background: #1E2A36;
+    color:white;
+    border-color: #161F29;
+}
+
+.home-thumb img:hover {
+    transform: scale(1.2);
+}
+
+.thumbnail img{
+    transition: all 0.3s ease 0s;
+    widht 100%;
+}
+
+.thumbnail {
+    overflow: hidden;
+}
+

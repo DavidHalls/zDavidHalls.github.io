@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="application/javascript">
+        
+        function loadJSON(){
+           var data_file = "BookJson.json";
+           var http_request = new XMLHttpRequest();
+           try{
+              // Opera 8.0+, Firefox, Chrome, Safari
+              http_request = new XMLHttpRequest();
+           }catch (e){
+              // Internet Explorer Browsers
+              try{
+                 http_request = new ActiveXObject("Msxml2.XMLHTTP");
+              }catch (e) {
+                 try{
+                    http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                 }catch (e){
+                    // Something went wrong
+                    alert("Your browser broke!");
+                    return false;
+                 }
+              }
+           }
+           http_request.onreadystatechange  = function(){
+              
+              if (http_request.readyState == 4  )
+              {
+                // Javascript function JSON.parse to parse JSON data
+                var jsonObj = JSON.parse(http_request.responseText);
+
+                // jsonObj variable now contains the data structure and can
+                // be accessed as jsonObj.name and jsonObj.country.
+                document.getElementById("Title").innerHTML =  jsonObj.book[document.getElementById("BookSel").value].Title;
+                document.getElementById("Author").innerHTML = jsonObj.book[document.getElementById("BookSel").value].Author;
+                  document.getElementById("Desc").innerHTML = jsonObj.book[document.getElementById("BookSel").value].desc;
+              }
+           }
+           http_request.open("GET", data_file, true);
+           http_request.send();
+        }
+        </script>
+        <title>JSON Using AJAX</title>
+    </head>
+    <body>
+        <h1>Book Details</h1>
+        <table class="src" >
+            <tr>
+                <th>Title</th>
+                <th>Author</th><th>Description</th>
+            </tr>
+            <tr>
+                <td><div id="Title">None Selected</div></td>
+                <td><div id="Author">None Selected</div></td>
+                <td><div id="Desc" style="width: 800px">None Selected</div></td>
+            </tr>
+        </table>
+        <div class="central">
+            <select id='BookSel' onchange ="loadJSON()">
+                <script>   
+            var data_file = "BookJson.json";
+            var http_request = new XMLHttpRequest();
+
+            try {
+                // Opera 8.0+, Firefox, Chrome, Safari
+                http_request = new XMLHttpRequest();
+
+            } catch (e) {
+                // Internet Explorer Browsers
+                try {
+                    http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {
+                        // Something went wrong
+                        alert("Your browser broke!");
+                    }
+                }
+            }
+            
+            http_request.onreadystatechange = function () {
+                if (http_request.readyState == 4) {
+                    // Javascript function JSON.parse to parse JSON data
+                    var jsonObj = JSON.parse(http_request.responseText);
+                    var text = "<option value='0'>--------</option>";
+                    var text2 = "<option value='0'>--------</option>";                    
+                    for (var i = 0; i < jsonObj.book.length; i++) {                        
+                        text = text + "<option id='books' value = '" + i + "'> "  +
+                            jsonObj.book[i].Title + "</option>";                        
+//                        text2 = text2 + "<option id='ship' value = '" + jsonObj.people[i].relation + "'> " + jsonObj.people[i].relation + "</option>";                        
+                    }     
+//                    for (var i = 0; i < jsonObj.people.length; i++) {                        
+//                        text = text + "<option id='person' value = '" + jsonObj.people[i].name + "'> " + 
+//                            jsonObj.people[i].name + " " + jsonObj.people[i].lname + "</option>";                        
+//                        text2 = text2 + "<option id='ship' value = '" + jsonObj.people[i].relation + "'> " + jsonObj.people[i].relation + "</option>";                        
+//                    } 
+                    document.getElementById("BookSel").innerHTML = text;
+//                    document.getElementById("relation").innerHTML = text2;
+                }
+            }
+            http_request.open("GET", data_file, true);
+            http_request.send();
+        </script>
+            </select>
+        </div>
+    </body>
+</html>

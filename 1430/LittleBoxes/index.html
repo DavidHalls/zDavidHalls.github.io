@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Little Boxes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body{
+                background-color: lightgreen;
+            }
+            div{
+                display: inline-block;
+
+            }
+
+            div.banner{
+                position: relative;
+                width: 80%;
+                height:auto;
+                color: white;                
+                background: rgba(76,76,76,1);
+                background: -moz-linear-gradient(left, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(44,44,44,1) 19%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(0,0,0,1) 83%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+                background: -webkit-gradient(left top, right top, color-stop(0%, rgba(76,76,76,1)), color-stop(12%, rgba(89,89,89,1)), color-stop(19%, rgba(44,44,44,1)), color-stop(25%, rgba(102,102,102,1)), color-stop(39%, rgba(71,71,71,1)), color-stop(60%, rgba(17,17,17,1)), color-stop(76%, rgba(43,43,43,1)), color-stop(83%, rgba(0,0,0,1)), color-stop(91%, rgba(28,28,28,1)), color-stop(100%, rgba(19,19,19,1)));
+                background: -webkit-linear-gradient(left, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(44,44,44,1) 19%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(0,0,0,1) 83%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+                background: -o-linear-gradient(left, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(44,44,44,1) 19%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(0,0,0,1) 83%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+                background: -ms-linear-gradient(left, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(44,44,44,1) 19%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(0,0,0,1) 83%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+                background: linear-gradient(to right, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 12%, rgba(44,44,44,1) 19%, rgba(102,102,102,1) 25%, rgba(71,71,71,1) 39%, rgba(17,17,17,1) 60%, rgba(43,43,43,1) 76%, rgba(0,0,0,1) 83%, rgba(28,28,28,1) 91%, rgba(19,19,19,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=1 );
+
+
+            }
+            div.box1{
+                background-color: orange;
+                text-align: left;
+                color: white;
+                padding: 30px;
+                height: 180px;
+                width: 200px;
+                position: relative;
+                top: 0px;
+                box-shadow: 8px 15px orangered;
+                border-radius: 10px 10px 120px 10px;
+                -moz-border-radius: 10px 10px 120px 10px;
+                -webkit-border-radius: 10px 10px 120px 10px;
+                border: 8px groove white;
+
+            }
+            div.box2{
+                background-color: black;
+                color: orange;
+                text-align: right;
+                margin: 20px;
+                padding: 30px;
+                height: 180px;
+                width: 200px;
+                position: relative;
+                top: 0px;
+                box-shadow: -8px 15px grey;
+                border-radius: 10px 10px 10px 120px;
+                -moz-border-radius: 10px 10px 10px 120px;
+                -webkit-border-radius: 10px 10px 10px 120px;
+                border: 8px groove orange;
+            }
+
+            div.box3{
+                background-color: yellow;
+                color: black;
+                text-align: left;
+                padding: 20px;
+                height: 180px;
+                width: 220px;
+                position: relative;
+                top: 0px;
+                box-shadow: 8px -15px yellowgreen;
+                border-radius: 10px 120px 10px 10px;
+                -moz-border-radius: 10px 120px 10px 10px;
+                -webkit-border-radius: 10px 120px 10px 10px;
+                border: 8px groove grey;
+            }
+            div.box4{
+                background-color: darkblue;
+                color: yellow;
+                text-align: right;
+                margin: 20px;
+                padding: 20px;
+                height: 180px;
+                width: 220px;
+                position: relative;
+                top: 0px;
+                box-shadow: -8px -15px darkslateblue;
+                border-radius: 120px 10px 10px 10px;
+                -moz-border-radius: 120px 10px 10px 10px;
+                -webkit-border-radius: 120px 10px 10px 10px;
+                border: 8px groove yellow;
+            }
+            #containerBox{
+                background-color: #104040;
+                color: white;
+                border-style: solid;
+                border-color: black;
+                border-width: 1px;
+                padding: 10px;
+                position: relative;
+                top: -7px;
+                left: -7px;
+                height: auto;
+                width: auto;
+                text-align: left;
+            }
+
+            #shadowBox{
+                background-color: black;
+                position: relative;     
+                top: 7px;
+                left: 7px;
+                margin-bottom: 5px;
+                margin-right: 5px;
+                height: 300px;
+                width: 250px;
+
+            }
+            **cssmatic.com         
+            
+
+
+        </style>
+    </head>
+    <body>
+    <center><div class='banner' align='center'><h1>Little Boxes</h1></div><br>
+        <div class="box1">Little boxes on the hillside,
+            Little boxes made of ticky tacky,1
+            Little boxes on the hillside,
+            Little boxes all the same.
+            There's a green one and a pink one 
+            And a blue one and a yellow one,
+            And they're all made out of ticky tacky
+            And they all look just the same.</div>
+
+        <div class="box2"> And the people in the houses
+            All went to the university,
+            Where they were put in boxes
+            And they came out all the same,
+            And there's doctors and lawyers,
+            And business executives,
+            And they're all made out of ticky tacky
+            And they all look just the same.</div><br>
+
+        <div class="box3"> And they all play on the golf course
+            And drink their martinis dry,
+            And they all have pretty children
+            And the children go to school,
+            And the children go to summer camp
+            And then to the university,
+            Where they are put in boxes
+            And they come out all the same.</div>
+
+        <div class="box4"> And the boys go into business
+            And marry and raise a family
+            In boxes made of ticky tacky
+            And they all look just the same.
+            There's a green one and a pink one
+            And a blue one and a yellow one,
+            And they're all made out of ticky tacky
+            And they all look just the same.</div></center>
+
+
+    <center><div id='shadowBox' style='width:auto; height:auto'>
+            <div id='containerBox' style='width:auto; height:auto; background-color:#104040'>
+                <ul>
+                    <li>Little Boxes</li>
+                    <li>Words and Music</li>
+                    <li>by Malvina Reynolds</li>
+                    <li>&#169; 1962 renewed 1990</li>
+                    <li>Schroder Music Company</li>
+                </ul>
+
+            </div>
+
+            </body>
+            </html>

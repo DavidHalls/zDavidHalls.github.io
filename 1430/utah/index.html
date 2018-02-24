@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Utah</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            a:link    {color:black; background-color:transparent; text-decoration:none}
+            a:visited {color:black; background-color:transparent; text-decoration:none}
+            a:hover   {color:black; background-color:transparent; text-decoration:none}
+            a:active  {color:yellow; background-color:transparent; text-decoration:underline}
+
+            body {
+                background-color: lightblue
+            }
+             .button {
+                appearance: button;
+                -moz-appearance: button;
+                -webkit-appearance: button;
+                text-decoration: none; 
+                font: menu;                
+                color: buttontext;
+                display: inline-block; 
+                padding: 5px 8px;
+                box-shadow: 5px 5px 5px #888888;             
+            }
+            
+        </style>
+
+    </head>
+    <body>
+        <div class="container">
+<!--            <a href="../" class="button" style="background-color:whitesmoke; width:60px"><center><b>Home</b></center></a>-->
+        </div>
+
+    <center><img src="Utah.jpeg" alt="" usemap="#Utah" /></center>
+
+    <map name="Utah">
+        <span title="Visit Logan!"><area shape="rect" coords="155,50,197,66" alt="Logan" href="http://www.loganutah.org/" target="_blank"></span>
+        <span title="Visit St. George!"><area shape="rect" coords="13,510,82,528" alt="Saint George" href="http://www.sgcity.org/" target="_blank"></span>
+        <span title="Visit Moab!"><area shape="rect" coords="322,364,365,383" alt="Moab" href="http://www.discovermoab.com/" target="_blank"></span>
+        <span title="Visit Salt Lake City!"><area shape="rect" coords="143,147,230,166" alt="SLC" href="http://www.visitsaltlake.com/" target="_blank"></span>
+        <span title="Visit Provo(maybe not though)!"><area shape="rect" coords="166,197,213,215" alt="Provo" href="http://www.provo.org/" target="_blank"></span>
+        <span title="Visit Utah!"><area shape="rect" coords="133,310,214,346" alt="Utah" href="http://www.utah.gov/" target="_blank"></span>
+
+
+    </map><br>
+ 
+<script src="../images/changetext.min.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/jquery-1.7.min.js"></script><script src="../images/changetext.js" type="text/javascript"></script>
+<script>
+$(function () {
+    var messages = [],
+        index = 0;
+
+    messages.push('<b><center><a href="http://www.utah.gov/index.html" target="_blank">Welcome to Utah</center></b>');
+    messages.push('<b><center>Home of The Greatest Snow on Earth</center></b>');
+    messages.push('<b><center><a href="http://www.skiutah.com/snowreport" target="_blank">With 15 Ski Resorts</center></b>');
+    messages.push('<b><center><a href="http://www.zioncanyon.com/?gclid=CP7G85XDv8YCFVSSfgodlaEP9w" target="_blank">We have Zions National Park</center></b>');
+    messages.push('<b><center><a href="http://www.nps.gov/arch/index.htm" target="_blank">and Arches National Park</center></b>');
+    
+
+    function cycle() {
+        $('#some-id').html(messages[index]);
+        index++;
+
+        if (index === messages.length) {
+            index = 0;
+        }
+
+        setTimeout(cycle, 3000);
+    }
+
+    cycle();
+});
+</script>
+<div id="some-id"></div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+.navbar{
+    background: #005B0B;
+}
+
+body{
+    background-color: #152417;
+    color: #67C673;
+/*    font-family: 'PT Sans', sans-serif;*/
+}
+
+.container{
+    background: #0F7B1C;
+    width: 95%;       
+}

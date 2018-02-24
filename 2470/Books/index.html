@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+                <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+        <script>
+            //change on the drop down
+            function drpJSON() {
+
+                var data_file = "BookJson.json";
+                var http_request = new XMLHttpRequest();
+
+                try {
+                    // Opera 8.0+, Firefox, Chrome, Safari
+                    http_request = new XMLHttpRequest();
+
+                } catch (e) {
+                    // Internet Explorer Browsers
+                    try {
+                        http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+                            // Something went wrong
+                            alert("Your browser broke!");
+                            return false;
+                        }
+                    }
+                }
+                http_request.onreadystatechange = function () {
+                    if (http_request.readyState == 4) {
+                        // Javascript function JSON.parse to parse JSON data
+                        var jsonObj = JSON.parse(http_request.responseText);
+
+                        // jsonObj variable now contains the data structure and can
+                        // be accessed as jsonObj.name and jsonObj.country.
+                        var text = "";
+                        for (var i = 0; i < jsonObj.book.length; i++) {
+                            if (jsonObj.book[i].authorid == document.getElementById("BookSel").value && document.getElementById("BookSel").value != 0) {
+                                text = text + jsonObj.book[i].Title + " " + jsonObj.book[i].Author + "<br>";
+                                var selection = i;
+                                console.log(i);
+                            }
+                        }
+                        console.log(selection);
+//                        document.getElementById("booklist").innerHTML = text;
+                        document.getElementById("Title").innerHTML = jsonObj.book[selection].Title;
+                        document.getElementById("Author").innerHTML = jsonObj.book[selection].Author;
+                    }
+                }
+                http_request.open("GET", data_file, true);
+                http_request.send();
+            }
+            //for the writ in element
+            function wrtJSON() {
+
+                var data_file = "BookJson.json";
+                var http_request = new XMLHttpRequest();
+
+                try {
+                    // Opera 8.0+, Firefox, Chrome, Safari
+                    http_request = new XMLHttpRequest();
+
+                } catch (e) {
+                    // Internet Explorer Browsers
+                    try {
+                        http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                    } catch (e) {
+                        try {
+                            http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                        } catch (e) {
+                            // Something went wrong
+                            alert("Your browser broke!");
+                            return false;
+                        }
+                    }
+                }
+                http_request.onreadystatechange = function () {
+                    if (http_request.readyState == 4) {
+                        // Javascript function JSON.parse to parse JSON data
+                        var jsonObj = JSON.parse(http_request.responseText);
+
+                        // jsonObj variable now contains the data structure and can
+                        // be accessed as jsonObj.name and jsonObj.country.
+                        var text = "";
+                        for (var i = 0; i < jsonObj.book.length; i++) {
+                            if (jsonObj.book[i].Author.indexOf(document.getElementById("AuthorName").value) > -1 && document.getElementById("AuthorName").value != "") {
+                                if (text.length > 0) {
+                                    text = "";
+                                }
+                                text = text + jsonObj.book[i].Title + " " + jsonObj.book[i].Author + "<br>";
+                                var selection = i;
+                                console.log(i);
+                            }
+                        }
+                        console.log(selection);
+                        document.getElementById("booklist").innerHTML = text;
+                        document.getElementById("Title").innerHTML = jsonObj.book[selection].Title;
+                        document.getElementById("Author").innerHTML = jsonObj.book[selection].Author;
+                    }
+                }
+                http_request.open("GET", data_file, true);
+                http_request.send();
+            }
+        </script>
+        <title>JSON Using AJAX</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="navbar nav-fixed-top navbar-inverse" style="color:white; text-align:center;"><h1>Book Details</h1></div>
+            <div class="col-sm-3">
+<!--                Column 1 -->
+                <h1>Title</h1>
+                <div id="Title">None Selected</div>
+            </div>
+            <div class="col-sm-8">
+                <h1>Author</h1>
+                <div id="Author">None Selected</div>
+            </div> 
+<!--            <div class="col-sm-6">Take up some space</div>-->
+        <table class="src" style="color:white">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+            </tr>
+            <tr>
+                <td><div id="Title">None Selected</div></td>
+                <td><div id="Author">None Selected</div></td>
+            </tr>
+            <tr>
+                <td><div id="booklist">some books</div></td>
+                <td></td>
+            </tr>
+        </table>
+<!--            <div class="col-sm-6">Take up some space</div>-->
+            <div class="col-sm-2">Select a Book Number:<br>            
+                Or Enter a Author:</div>
+                <div class="col-sm-3"> <select id='BookSel' onchange ="drpJSON()">
+
+            </select><br>
+            <input type="text" name="AuthorName" id="AuthorName">
+            <input type="button" onclick="wrtJSON()" value="Pick">
+        </div></div></div></div>
+        <script>
+            var data_file = "BookJson.json";
+            var http_request = new XMLHttpRequest();
+
+            try {
+                // Opera 8.0+, Firefox, Chrome, Safari
+                http_request = new XMLHttpRequest();
+
+            } catch (e) {
+                // Internet Explorer Browsers
+                try {
+                    http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {
+                        // Something went wrong
+                        alert("Your browser broke!");
+                    }
+                }
+            }
+            http_request.onreadystatechange = function () {
+                if (http_request.readyState == 4) {
+                    // Javascript function JSON.parse to parse JSON data
+                    var jsonObj = JSON.parse(http_request.responseText);
+                    var text = "<option value='0'>--</option>";
+                    for (var i = 0; i < jsonObj.book.length; i++) {
+                        text = text + "<option value = '" + jsonObj.book[i].authorid + "'> " + jsonObj.book[i].Title + "</option>";
+                    }
+                    document.getElementById("BookSel").innerHTML = text;
+                }
+            }
+            http_request.open("GET", data_file, true);
+            http_request.send();
+        </script>
+    </body>
+
+
+</html>

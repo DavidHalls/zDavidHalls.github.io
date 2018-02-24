@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Tic Tac Toe</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            body {
+                text-align: center;
+                font-size: 26px;
+                font-family: 'Comic Sans MS', Helvetica, sans-serif;
+                
+            }
+            p{
+                text-align: center;
+                font-size: 20px;
+                font-family: 'comic sans ms';
+                background-color: lightblue;
+                color: black;
+                font-weight: bolder;
+                height: 25px;
+                width: 75%;
+                margin-left: auto;
+                margin-right: auto;
+                padding-bottom: -10px;
+            }
+
+            td {
+                height: 175px;
+                width: 150px;
+                text-align: center;
+                font-size: 55px;
+                -webkit-border-radius: 10px;
+                background-color: blue;
+            }
+            #players {
+                margin-left:auto; 
+                margin-right:auto;
+                padding: 20px 10px 10px 10px;
+                width: 511px; 
+                text-align: left;
+            }
+
+            button {
+                vertical-align: top;
+                size: 100px;
+            }
+            .current-player {
+                color: black !important;
+                -webkit-transform: scale(1.5);
+            }
+            .X-marker {
+                color: #663366;
+            }
+            .X-marker:before {
+                content: "X";
+            }
+            small{
+                height: 0px;
+                font-size: 1px;
+
+            }
+            .O-marker {
+                color: #CC0033;
+            }
+            .O-marker:before {
+                content: "O";
+            }
+
+            .Row { display: table-row;
+                   alignment-adjust: middle;
+                   margin-left: auto;
+                   margin-right: auto;
+
+            }
+
+            .cell { display: table-cell;  
+                    alignment-adjust: middle;
+                    border: solid;                     
+                    margin-left: auto;
+                    margin-right: auto;               
+                    padding-left: 5px; 
+                    padding-right: 5px;                     
+                    height: 120px; 
+                    width: 145px; 
+                    text-align: center; 
+                    vertical-align: middle; }
+
+            .names { //display: table-cell;  
+                     //alignment-adjust: middle;
+                     //float: right;
+                     //vertical-align: ;
+                     background-color: lightblue;
+                     border: none;                        
+                     //margin-top: 5px;
+                     margin-left: auto;
+                     margin-right: auto;            
+                     padding-left: 5px; 
+                     padding-right: 5px;  
+                     padding-bottom: 15px;
+                     height: 118px; 
+                     width: 300px;                     
+                     text-align: left;
+                     font-size: 25px;                     
+                     //vertical-align: top;
+                     //position: relative;
+            }
+
+            table {
+                margin:auto;
+                //position: absolute;
+                display: inline-table;
+                margin-right:auto; 
+                width: 500px; 
+                -webkit-user-select: none; 
+                //float: left; 
+            }
+
+            table.two {
+                margin:auto;
+                //position: absolute;
+                display: inline-table;
+                margin-right:auto; 
+                width: 500px; 
+                //height: 425px;
+                -webkit-user-select: none; 
+                //float: left; 
+            }
+            div.title {
+                display: table-row;                
+                border-style: solid;
+                border-width: 5px;
+                padding-right: 25px;
+                background-color: blue;
+                color: #cccccc;
+                -webkit-transition-duration: 200ms;
+            } 
+            div.cell:hover {
+                background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #3e19b9), color-stop(1, #9317ac));
+                background:-moz-linear-gradient(top, #3e19b9 5%, #9317ac 100%);
+                background:-webkit-linear-gradient(top, #3e19b9 5%, #9317ac 100%);
+                background:-o-linear-gradient(top, #3e19b9 5%, #9317ac 100%);
+                background:-ms-linear-gradient(top, #3e19b9 5%, #9317ac 100%);
+                background:linear-gradient(to bottom, #3e19b9 5%, #9317ac 100%);
+                filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#3e19b9', endColorstr='#9317ac',GradientType=0);
+                background-color:#3e19b9;
+                position: relative;
+            }
+            
+
+
+        </style>
+        <script>
+            var player = "X";
+            var player1name = "";
+            var player2name = "";
+            var currentPlayer = "";
+            var playerX = 0;//score during the game
+            var playerO = 0;
+            var score = 0;
+            var scoreX = 0;
+            var scoreO = 0;
+            var winner = "";
+            var winsArray = [7, 56, 448, 73, 146, 292, 273, 84];
+            var clickedArray = [];
+            var clicksCount = 0;
+            var firstPlayer = player1name;
+            var tie = 0;
+
+            function start()
+            {
+                //alert("game started");
+                player1name = prompt("Enter First Player's Name?", "");
+                player2name = prompt("Enter Second Player's Name?", "");
+                currentPlayer = player1name;
+                document.getElementById("player").innerHTML = currentPlayer + " choose a square.";
+                document.getElementById("p1").value = player1name + " score!";
+                document.getElementById("p2").value = player2name + " score!";
+            }
+            function playerMoved(id, value)
+            {
+                //alert(id + " " + value);
+                changeText(id);
+                updateScore(value);
+                //alert(clicksCount);
+
+                //check score of current player
+                if (player === "X")
+                {
+                    check4winner(scoreX);
+                }
+                else
+                {
+                    check4winner(scoreO);
+                }
+                if (winner !== "")
+                {
+                    //alert("winner:" + winner);
+                    //document.getElementById("winner").innerHTML = currentPlayer + " Won!";
+                    clicksCount = 0;
+                    document.getElementById("winner").innerHTML = winner;
+                    document.getElementById("winner").innerHTML = winner + " won the last game!";
+
+                    startNewGame();
+                }
+                else
+                {
+                    if (clicksCount >= 9)
+                    {
+                        alert("Tie Game!");
+                        clicksCount = 0;
+                        tie++;
+                        scoreBoard();
+                        startNewGame();
+                    }
+                    switchPlayer();
+                }
+                switchMarker();
+
+            }
+
+            function switchMarker()
+            {
+                //alert("change players: " + player);
+                if (player === "X")
+                {
+                    player = "O";
+                }
+                else
+                {
+                    player = "X";
+                }
+                document.getElementById("player").innerHTML = currentPlayer + " choose a square";
+            }
+
+            function changeText(id)
+            {
+                if (id.innerHTML === "")
+                {
+                    clickedArray[clicksCount] = id;
+                    clicksCount = clicksCount + 1;
+                    if (player === 'X')
+                    {
+                        id.innerHTML = "X";
+                    }
+                    else
+                    {
+                        id.innerHTML = "O";
+                    }
+                }
+            }
+
+            function updateScore(value)
+            {
+                if (player === "X")
+                {
+                    scoreX = scoreX + value;
+                }
+                else
+                {
+                    scoreO = scoreO + value;
+                }
+                //alert("X: " + scoreX + " O:" + scoreO);
+            }
+            function switchPlayer()
+            {
+                //switch player prompt
+                if (currentPlayer === player1name)
+                {
+                    currentPlayer = player2name;
+                }
+                else
+                {
+                    currentPlayer = player1name;
+                }
+                document.getElementById.innerHTML = currentPlayer + " choose a square.";
+            }
+            function check4winner(score)
+            {
+                //alert(score);
+
+                var i;
+                for (i = 0; i < winsArray.length; i++)
+                {
+                    if ((winsArray[i] & score) === winsArray[i])
+                    {
+                        if (player === "X")
+                        {
+                            winner = player1name;
+                            playerX++;
+                            scoreBoard();
+                        }
+                        else
+                        {
+                            winner = player2name;
+                            playerO++;
+                            scoreBoard();
+                        }
+
+                        i = 99; //break out of for loop 
+                        alert(winner + " Won!");
+                        //alert(playerX + " " + playerO);
+                    }
+                }
+            }
+            function startNewGame()
+            {
+                //alert("start new game?")
+                winner = "";
+                scoreO = 0;
+                scoreX = 0;
+
+                //reset all clicked squares
+                for (i = 0; i < clickedArray.length; i++)
+                {
+                    clickedArray[i].innerHTML = "";
+                }
+                //change who goes first
+                if (firstPlayer === player1name)
+                {
+                    firstPlayer = player2name;
+                }
+                else
+                {
+                    firstPlayer = player1name;
+                }
+                currentPlayer = firstplayer;
+                document.getElementById("player").innerHTML = currentPlayer + "choose a square!";
+                //update score   
+            }
+            function scoreBoard()
+            {
+                document.getElementById("one").value = playerX;
+                document.getElementById("two").value = playerO;
+                document.getElementById("tie").value = tie;
+            }
+            function reset()
+            {
+                playerX = 0;
+                playerO = 0;
+                tie = 0;
+                scoreBoard();
+                startNewGame();
+            }
+
+
+
+        </script>
+
+
+    <body onload = "start();"> 
+        <img src="/HomePage/Images/images/tictactoe.jpg" name="TTT" width="265" height="140" alt="ttc"/>
+        <h5 id="player"></h5>
+        <table border="0" >
+            <tbody>
+                <tr>
+                    <td><div class="title">            
+                            <div class="Row">
+                                <div class="cell" onclick="playerMoved(this, 1)"></div>
+                                <div class="cell" onclick="playerMoved(this, 2)"></div>
+                                <div class="cell" onclick="playerMoved(this, 4)"></div>
+                            </div>
+                        </div>
+                        <div class="title">
+                            <div class="Row">
+                                <div class="cell" onclick="playerMoved(this, 8)"></div>
+                                <div class="cell" onclick="playerMoved(this, 16)"></div>
+                                <div class="cell" onclick="playerMoved(this, 32)"></div>
+                            </div>
+                        </div>
+                        <div class="title">            
+                            <div class="Row">
+                                <div class="cell" onclick="playerMoved(this, 64)"></div>
+                                <div class="cell" onclick="playerMoved(this, 128)"></div>
+                                <div class="cell" onclick="playerMoved(this, 256)"></div>
+                            </div>
+                        </div>
+                    </td>       
+                </tr>
+            </tbody>
+        </table> 
+        <table border="0" class="two">
+            <tbody>
+                <tr>
+                    <td><div class="names">
+                            <input type="text" id="one" style="width:20%" readonly/><input type="text" id="p1" readonly style="width:75%">
+                            <br><input type="text" id="two" size='5' readonly style="width:20%"/><input type="text" id="p2" readonly style="width:75%">
+                            <input type="text" name="tie" id="tie" size='5' readonly style="width:20%"/><input type="text" value="Tie Games" id="tie" readonly style="width:75%">
+                        </div><p id="winner"></p><button  type="submit" onclick='reset()'>Reset Score?</button>
+
+                        <img src="/HomePage/Images/images/tic1.jpg" width="200" height="185" alt="tic1"/>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <!--<button type="submit" onclick='startNewGame()'>Play Again?</button>-->
+    </body>
+</html>
