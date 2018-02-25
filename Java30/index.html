@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <title>David Halls</title>
-    <link rel="stylesheet" href="../2470/HomePage/js/bootstrap.min.js">
-    <link rel="stylesheet" href="../2470/HomePage/js/bootstrap.js">
-    <link rel="stylesheet" href="../2470/HomePage/css/custom.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.js">
+    <link rel="stylesheet" href="../css/bootstrap.js">
+    <link rel="stylesheet" href="../css/custom.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">    
 </head>
     <style>
@@ -17,6 +17,17 @@
         ul{
             margin-top: 135px;
             margin-left: 150px;
+        }
+        button{
+            width: 100px;
+            padding: 10px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            box-shadow: 1px 1px black, 2px 2px black, 3px 3px black, 4px 4px white;
+        }
+        .list{
+            width: 75%;
         }
     </style>
 <body style="background:#617487" >
@@ -40,7 +51,7 @@
     delete locarray[(locarray.length-1)];
     var arraytext = locarray.join("/");
     for(let i = 0; i < 29; i++){
-        list.innerHTML += "<br><button><a href='../Java30/"+ i + "/'>Project # "+i+"</a>";
+        list.innerHTML += "<button><a href='../Java30/"+ i + "/index.html'>Project # "+i+"</a>";
     }
     
 //    var fs = require('fs');
