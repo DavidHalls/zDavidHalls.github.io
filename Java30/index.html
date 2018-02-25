@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>David Halls</title>
+    <link rel="stylesheet" href="../2470/HomePage/js/bootstrap.min.js">
+    <link rel="stylesheet" href="../2470/HomePage/js/bootstrap.js">
+    <link rel="stylesheet" href="../2470/HomePage/css/custom.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">    
+</head>
+    <style>
+        li{
+            list-style: none;
+            margin-left: auto;
+            margin-right: auto;
+                }
+        ul{
+            margin-top: 135px;
+            margin-left: 150px;
+        }
+    </style>
+<body style="background:#617487" >
+    <div class="container">
+        <div >
+            <ul class="list">
+            </ul>
+<!--            <input type="file" name="client-file" id="get-files" multiple />-->
+
+        </div>
+    </div>
+    
+    
+</body>
+</html>
+<script>
+    const list = document.querySelector('.list');
+    
+    var myloc = window.location.href;
+    var locarray = myloc.split("/");
+    delete locarray[(locarray.length-1)];
+    var arraytext = locarray.join("/");
+    for(let i = 0; i < 29; i++){
+        list.innerHTML += "<br><button><a href='../"+ i + "/index.html'>Project # "+i+"</a>";
+    }
+    
+//    var fs = require('fs');
+//    var files = fs.readdirSync('/Java30/');
+    
+    console.log(myloc);
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

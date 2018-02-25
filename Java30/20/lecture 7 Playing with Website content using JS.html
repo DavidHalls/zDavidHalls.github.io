@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <title>Playing with Website content using JS</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+    
+    </style>
+    
+</head>
+
+<body>
+<button id="button"> click me</button>
+<div id="1stdiv">this is some text</div>
+<button id="2ndbutton">lets append</button>
+<div id="2nddiv"> this is text of 2nd div</div>
+<button id="createemp">lets create some text</button>
+<div id="emptydiv"></div>
+    <script type=text/javascript>
+    document.getElementById("button").onclick=function(){
+      document.getElementById("1stdiv").innerHTML="this is some new text after";
+    }
+    document.getElementById("2ndbutton").onclick=function(){
+      document.getElementById("2nddiv").innerHTML=document.getElementById("2nddiv").innerHTML + "this is Great";
+    }
+    document.getElementById("createemp").onclick=function(){
+      document.getElementById("emptydiv").innerHTML="<ul><li>apple</li><li>orange</li></ul>"
+    }
+    
+    //this above code is for changing content
+   
+    </script>
+    
+</body>
+</html>

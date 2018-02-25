@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+</head>
+<style>
+    .list{
+        font-size: 25px;
+        transition: all ease 3s;
+        margin-left: 50px;
+        list-style:decimal-leading-zero;
+        padding: 45px;
+    }
+    li:nth-child(odd){
+        color: black;
+    }
+    li:nth-child(even){
+        color: red;
+    }
+    </style>
+<body>
+    <div class="d">
+    <ul class="list">
+        </ul>
+        <button class="btn">Click Me!</button>
+        <form class="search-form">
+        <input type='text' name='item' class='item'/>
+            </form>
+        <p class='disp'></p>
+    </div>    
+    </body>
+    
+<script>
+    const list = document.querySelector('.list');
+    const arr = ['abc', 'def', 'ghi', 'jkl', 'mno', 'pqr', 5, 6, 7, 8];
+    const btn = document.querySelector('.btn');
+    const ins = document.querySelector('.search-form');
+    const pi = document.querySelector('.disp');
+    const item = document.querySelector('[name=item]');
+    var ar = [];
+    
+    ins.addEventListener('submit', add);
+    btn.addEventListener('click', createList);
+    
+    function add(e){
+        e.preventDefault();
+//        console.log(this.value);
+        var text = (this.querySelector('[name=item]')).value;
+        const item = {
+            text: text,
+            done: false
+        };
+        ar.push(item.text);
+        pi.innerHTML = ar.map((el, i) => `<li>${i}${el}</li>`).join('');
+//        console.log(ar);
+//        ar.push(item.text);
+//        console.log(ar);
+//        display(ar);
+        this.reset();
+    }
+    
+    function display(e){
+        var x = e.join('');
+        pi.innerHTML = ar.map(el => `<li>${el}</li>`).join('');
+    }
+    
+    function createList(){
+        btn.remove();
+        var i = 0;
+        var node = document.createElement('li');
+        var child = document.createTextNode('list');
+        node.appendChild(child);
+        list.appendChild(node);
+        
+    }
+//    list.innerHTML = arr.map(el => `<li>${el}</li>`).join('');
+//    
+//    function going(){
+//        var go = setInterval(function(){
+//        arr.pop();
+//        list.innerHTML = arr.map(el => `<li>${el}</li>`).join('');
+//        if(arr.length == 0){
+//            clearInterval(go);
+//            list.innerHTML = 'empty';
+//            add();
+//        }
+//    }, 500);
+//    }
+//    function add(){
+//        var i = 0;
+//        var ad = setInterval(function(){
+//            arr.push(i);
+//            list.innerHTML = arr.map(el => `<li>${i}</li>`).join('');
+//            if(arr.length > 9){
+//                clearInterval(ad);
+//                going();
+//            }
+//            i++;
+//        }, 500);
+//    }
+//        going();
+</script>
+</html>
