@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <title>Variables</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+    
+    </style>
+    
+</head>
+
+<body>
+    <input id="myinput" type="text" value="check" ></input>
+<button id="button"> click me</button>
+<div id="1stdiv">this is some text</div>
+
+    <script type=text/javascript>
+        var name=document.getElementById("myinput").value;
+    document.getElementById("button").onclick=function(){
+        name=document.getElementById("myinput").value;
+      document.getElementById("1stdiv").innerHTML=name;
+    }
+   
+    
+    //this above code is for changing content
+   
+    </script>
+    
+</body>
+</html>

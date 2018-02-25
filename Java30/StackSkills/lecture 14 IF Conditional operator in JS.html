@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <title>IF statements</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+    
+    </style>
+    
+</head>
+
+<body>
+    
+    <input id="weather">
+   <button id="mybutton" >Submit</button>
+   
+
+    <script type=text/javascript>
+    
+  /*  var x=1,y=2;
+    if (x==1) {
+        alert("you are good");
+        //code
+    }
+    else{
+        alert("not working Man");
+    }*/
+    
+    
+        var name="rain";
+  document.getElementById("mybutton").onclick=function()
+  {
+    if(document.getElementById("weather").value=="rain")
+      {
+        alert("it is raining");
+      }
+      else{
+        alert("its not raining")
+      }
+  }
+   
+    </script>
+    
+</body>
+</html>

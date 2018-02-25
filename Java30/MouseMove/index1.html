@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Shadow</title>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+      <div class="a one"></div>
+      <div class="a two"></div>
+      <div class="center"></div>
+          <div class="a three"></div>
+          <div class="a four"></div>       
+  </div>
+      </div>
+    <div class="line"></div>
+    <p class="testing">this is where testing goes</p>
+    <div class="remove">
+    <div class="progressBar">
+        <div class="myBar"><div class="done"></div>
+        </div>
+    </div>
+    </div>
+  <style>
+      .hero{
+          border: 5px solid black;
+          border-radius: 50%;
+          width: 150px;
+          height: 150px;
+          margin-top: 31%;
+/*          background-color: var(--base);*/
+          overflow: hidden;
+          margin-left: 200px;
+      }
+      .center{
+          margin-left: 50px;
+          margin-right: 0 auto;
+          margin-top: 50px;
+/*          margin-top: 35%;*/
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          z-index: 10;
+          border: 1px solid black;
+          overflow: hidden;
+            position: absolute;
+            background-color: black;
+      }
+      
+      .one,.two,.three,.four{
+          z-index: -1;
+          width: 50%;
+          height: 50%;
+          position: relative;
+      }
+      .one{
+          background-color: red;
+          float: left;
+      }.two{
+          background-color: blue;
+          float:right;
+      }.three{
+          background-color: blue;
+          float: left;
+      }.four{
+          background-color: red;
+          float: right;
+      }
+      .progressBar{
+          width: 100%;
+          margin-left: auto;
+          height: 25px;
+          background-color:yellow;
+          border: 3px solid black;
+/*          border: 1px solid black;*/
+          
+      }
+      .myBar{
+          width: 0;
+          height: 23px;
+          background-color: aqua;
+          overflow: hidden;    
+          border: 2px solid black;
+          box-shadow: -1px 1px gray, -2px 2px gray, -3px 3px gray, -4px 4px gray, -5px 5px gray, -6px 6px gray, -7px 7px black, -8px 8px black, -9px 9px 9px black;
+          margin-top: -8px;
+      }
+      
+      .done{
+          color: black;
+          float: right;
+          overflow: hidden;
+          top: -55%;
+      }
+      .light{
+          border: 2px solid #ffc600;
+          border-radius: 30%;
+          background: linear-gradient(to right, #ffc600, white);
+          height: 55px;
+          width: 55px;
+          margin-top:8%;
+          margin-left: 70%;
+          
+      }
+      
+      p::before{
+          content: 'Read This';
+          
+      }p::after{
+              content: 'Did you ready this?';
+          }
+      .line{
+          border: 2px solid black;
+      }
+      :root{
+          --base: #ffc600;
+          --spacing: 150px;
+          --blur: 5px;
+          --width: 0%;
+      }
+      .move{
+          transform: rotate(360deg);
+          margin-left: 1800px;
+          transition: linear all 5s;
+      }
+      .moveb{
+          transform: rotate(-360deg);
+          margin-left: -10px;
+          transition: ease-out all 1s;
+      }
+      .complete{
+          margin-right: 50%;          
+          color: red;
+          font-size: 125%;
+          font-weight: bold;
+          transition: ease all 3s;
+          text-shadow: 2px 2px 1px black;
+          transform: rotateY(360deg);
+      }
+  </style>
+
+<script>
+    var width = window.innerWidth;
+    console.log(window.innerHeight, window.innerWidth);
+    const g = document.querySelector('.hero');
+    const suffix = 'px';
+    const testing = document.querySelector('.testing');
+    var i = 0;
+    const doneBar = document.querySelector('.myBar');
+    const prog = document.querySelector('.progressBar');
+    const wid = prog.clientWidth;
+    var don = document.querySelector('.done');
+    const rem = document.querySelector('.remove');
+    var gone = setInterval(function(){
+        g.classList.add('move');
+        g.addEventListener('transitionend', function(){        
+        g.classList.remove('move');
+        testing.innerHTML = new Date();
+    }, 1000);
+    });
+    var i = 0;
+    function update(){ 
+        i+=15;
+        doneBar.style.width = ((i / wid)*100) +'%';
+        don.innerHTML = Math.round(((i / wid)) * 100)+'%'; 
+        console.log({don});
+        if(don.innerHTML == '101%'){
+            clearInterval(int);
+            clearInterval(gone);
+            don.classList.add('complete');
+            don.innerHTML = 'COMPLETE';
+//            rem.outerHTML = '';
+            setTimeout(function(){rem.outerHTML = ''; }, 4000);
+        }
+    }
+    var int = setInterval(update, 50);
+    
+</script>
+</body>
+</html>
