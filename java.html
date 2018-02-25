@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>David Halls</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script
+			  src="https://code.jquery.com/jquery-3.1.0.js"
+			  integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="
+			  crossorigin="anonymous"></script>
+    
+</head>
+    <style>
+        p{
+            color:white;
+            font-size: 16px;
+        }
+        #disp{
+  font-size:20px;
+  height:300px;
+  width:95%;
+  margin-left:25px;
+  margin-right:25px;
+  margin-top:25px;
+  border:1px solid black;
+}
+
+#links{  
+  margin-left:3%;
+    color:black;
+    font-size:20px;
+}
+
+.main{
+  color:blue;
+  font-size:18px;
+    margin-right:350px;
+}
+        .text{
+            margin-right: 500px;
+        }
+.main:hover{
+  color:green;
+  cursor:pointer;  
+}</style>
+
+<head>
+    <meta charset="utf-8">
+    <title>David Halls</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    
+</head>
+    <body style="background:#617487">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+<!--
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+-->
+                <p class="navbar-brand" href="#">Java Programs by David Halls</p>                
+            </div></div></div><p style="margin-left:100px">Below is a list of JAVA projects completed for college classes.  There is an executable jar file available for download.</p>
+    <div style="margin-left:150px">
+        <div>
+          <div id='Contacts' class='main'><b class='caret'></b>&nbsp;&nbsp;Contact List </a><br></div>
+            <div id='more'>
+                <p class='text'>The Contact List project was a group project for our final assignment of the semester.  We were tasked with creating a Contact List that would store three types of contacts, Family, Friend and Business.  We were also required to save the contact list as a serialized file and read the contents of the file when updating the registry.  It needed to be sortable by contact type and searchable.  Being able to add, update and delete contacts was also required.</p>
+            <a href="/HomePage/JavaFiles/ContactList.jar" id='links' >T3 Main GUI.java</a><br>
+
+        </div>
+        </div>
+        </div>      
+        </div>
+      <div style="margin-left:150px">
+        <div>
+          <div id='pig' class='main' ><b class='caret'></b>&nbsp;&nbsp;Pig Latin Translator<br></div>
+            <div id='more1'><p class='text'>The Pig Latin Translator was to read in a sentence from the user and convert it to pig latin.  </p>
+            <a href="/HomePage/JavaFiles/Piglish.jar" download id='links' onclick="test()">Translator</a><br></div>            
+        </div>
+        </div>
+<div style="margin-left:150px">
+        <div>
+          <div id='emote' class='main'><b class='caret'></b>&nbsp;&nbsp;Emoticons<br></div>
+            <div id='more2'><p class='text'>With Emoticons, we were to draw three different types of emoticons using Java.  You change the emoticon by selecting the one to view from the File Menu.  </p>
+            <a href="/HomePage/JavaFiles/Emoticons.jar" download id='links' onclick="test()">Emoticons</a><br></div>            
+        </div>
+        </div>
+<div style="margin-left:150px">
+        <div>
+          <div id='GUI' class='main' ><b class='caret'></b>&nbsp;&nbsp;GUI Demo<br></div>
+            <div id='more3'><p class='text'>This was our first assignment creating a GUI interface.  The buttons for this were just meant to display a message and not actually perform saving and deletion actions.</p>
+            <a href="/HomePage/JavaFiles/GUIDemo.jar" download id='links' onclick="test()">GUI</a><br></div>            
+        </div>
+        </div>
+<!--        <div class='container' id='disp'></div>-->
+            
+    </body>
+    
+</html>
+    <script>
+        $(document).ready(function(){
+  $('#more').hide();
+  $('#more1').hide();
+            $('#more2').hide();
+            $('#more3').hide();
+    
+ });
+$("#Contacts").click(function(event){
+     $('#more').toggle(800);       
+   }); 
+$("#pig").click(function(e){
+  $("#more1").toggle(800);
+})
+$("#emote").click(function(e){
+  $("#more2").toggle(800);
+})
+$("#GUI").click(function(e){
+  $("#more3").toggle(800);
+})
+function test(){
+  document.getElementById('disp').innerHTML = PigLatin.java;
+  // alert('this');
+}
+    </script>
+</html>
