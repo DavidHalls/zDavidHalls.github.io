@@ -2,12 +2,13 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>David Halls</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.js">
-    <link rel="stylesheet" href="../css/bootstrap.js">
-    <link rel="stylesheet" href="../css/custom.css">
+    <title>30 days of JavaScript</title>
+    <link rel="stylesheet" href="../2470/HomePage/js/bootstrap.min.js">
+    <link rel="stylesheet" href="../2470/HomePage/js/bootstrap.js">
+    <link rel="stylesheet" href="../2470/HomePage/css/custom.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">    
 </head>
+
     <style>
         li{
             list-style: none;
@@ -19,45 +20,127 @@
             margin-left: 150px;
         }
         button{
-            width: 100px;
+/*            width: 100px;*/
+            min-width: 250px;
+            max-width: 350px;
+            border: 1px solid black;
             padding: 10px;
             margin-left: 5px;
             margin-right: 5px;
             margin-top: 5px;
             box-shadow: 1px 1px black, 2px 2px black, 3px 3px black, 4px 4px white;
+            background-color: white;
         }
         .list{
             width: 75%;
         }
+        
     </style>
-<body style="background:#617487" >
+
+<body style="background:#617487">
     <div class="container">
-        <div >
+        <div class="test"></div>
             <ul class="list">
             </ul>
-<!--            <input type="file" name="client-file" id="get-files" multiple />-->
-
-        </div>
-    </div>
-    
-    
+        </div>        
 </body>
 </html>
+
 <script>
     const list = document.querySelector('.list');
-    
-    var myloc = window.location.href;
-    var locarray = myloc.split("/");
-    delete locarray[(locarray.length-1)];
-    var arraytext = locarray.join("/");
+    const test = document.querySelector('.test');
+    const btn = document.querySelectorAll('button');
+      var urls = [];
+      let arr = [];
+      const getTitle = (url) => {  
+  return fetch(`https://crossorigin.me/${url}`)
+    .then((response) => response.text())
+    .then((html) => {
+      const doc = new DOMParser().parseFromString(html, "text/html");
+      const title = doc.querySelectorAll('title')[0];
+//      arr.push([title.textContent]);
+      return title.textContent;
+    });
+};
+//    alert(btn);
     for(let i = 0; i < 29; i++){
-        list.innerHTML += "<button><a href='../Java30/"+ i + "/index.html'>Project # "+i+"</a>";
+        urls.push('https://davidhalls.github.io/Java30/'+i+'/');           
     }
     
-//    var fs = require('fs');
-//    var files = fs.readdirSync('/Java30/');
+   let promA = Promise.all(
+  urls.map((url) => getTitle(url))
+).then((titles) => {
+//  console.log(titles);    
+       for(var i = 0; i < urls.length - 1; i++){           
+           document.getElementById('test_'+i).textContent = titles[i];
+       }
+});
+    let x;
+    for(var i = 0; i < urls.length - 1; i++){
+        list.innerHTML += "<button><a href='../Java30/"+ i + "/index.html' id=test_"+ i + ">"+ i +" </a></button>";            
+//        setText(i);
+//        console.log(getTitle(urls[i]));
+    }
+//    console.log(promA);
+    const btn1 = document.getElementById('test_1');
     
-    console.log(myloc);
-
-
+    function setText(title, id){
+       test.textContent +=  title;
+        console.log(title);
+        if(title == "" || title == null){
+            
+        }else{            
+//        document.getElementById('test_'+id).textContent = title;
+        }
+//        arr.push(getTitle(urls[id]));
+//        then(function(result){
+//            console.log(x);
+//        })
+//        console.log(x);
+    }
+    x = promA.then(function(result){
+       
+    })
+//    console.log(x);
+//    alert(arr[5].PromiseValue);
+//    console.log(arr, arr.length);
+//    x.then(function(result) {
+//        console.log(result);
+//    // here you can use the result of promiseB
+//});
+//  urls.map((url) => getTitle(url))
+//).then((titles) => {
+//  console.log(titles);     
+//});
+//    console.log(arr, arr[5]);
+//    for(let i = 0; i < 29; i++){        
+//     list.innerHTML += "<button><a href='../Java30/"+ i + "/index.html'>"+ i +"</a>";   
+//        
+//    }
+    test.textContent += arr;
+//    console.log(arr, arr.length, urls.length);
+//    document.reload(5);
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
