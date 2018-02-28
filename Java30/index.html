@@ -70,9 +70,27 @@
    let promA = Promise.all(
   urls.map((url) => getTitle(url))
 ).then((titles) => {
-//  console.log(titles);    
-       for(var i = 0; i < urls.length - 1; i++){           
-           document.getElementById('test_'+i).textContent = titles[i];
+//  console.log(titles);   
+       let varX;
+       for(var i = 0; i < urls.length - 1; i++){   
+           if(titles[i].length > 30){
+               for(var j = 0; j < 30; j++){
+                   varX += titles[i][j];
+                   if(j == 29){
+                       varX += '...';
+                   }
+               }
+           }else{
+               varX = titles[i];
+           }
+           document.getElementById('test_'+i).textContent = varX;
+           console.log(varX.includes('GitHub'));
+           
+           if(varX.includes('GitHub')){
+               document.getElementById('test_'+i).parentNode.remove();
+           }
+           varX = '';
+//           console.log(varX);
        }
 });
     let x;
