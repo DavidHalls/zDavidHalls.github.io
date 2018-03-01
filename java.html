@@ -120,37 +120,25 @@
             $('#more3').hide();
     
  });
-$("#Contacts").click(function(event){
-     $('#more').toggle(800);
-	//$('#more').hide();
-  $('#more1').hide();
-            $('#more2').hide();
-            $('#more3').hide();
-   }); 
-$("#pig").click(function(e){
-  $("#more1").toggle(800);
-	$('#more').hide();
-  //$('#more1').hide();
-            $('#more2').hide();
-            $('#more3').hide();
-})
-$("#emote").click(function(e){
-  $("#more2").toggle(800);
-	$('#more').hide();
-  $('#more1').hide();
-           // $('#more2').hide();
-            $('#more3').hide();
-})
-$("#GUI").click(function(e){
-  $("#more3").toggle(800);
-	$('#more').hide();
-  $('#more1').hide();
-            $('#more2').hide();
-            //$('#more3').hide();
-})
-function test(){
-  document.getElementById('disp').innerHTML = PigLatin.java;
-  // alert('this');
-}
+	    
+$(".main').addEventListener('click', function(){
+  	this.toggle(800);
+  });
+// $("#Contacts").click(function(event){
+//      $('#more').toggle(800);
+//    }); 
+// $("#pig").click(function(e){
+//   $("#more1").toggle(800);
+// })
+// $("#emote").click(function(e){
+//   $("#more2").toggle(800);
+// })
+// $("#GUI").click(function(e){
+//   $("#more3").toggle(800);
+// })
+// function test(){
+//   document.getElementById('disp').innerHTML = PigLatin.java;
+//   // alert('this');
+// }
     </script>
 </html>
