@@ -121,9 +121,10 @@
     
  });
 	    
-$(".main').addEventListener('click', function(){
-  	this.toggle(800);
-  });
+const main = document.querySelectorAll('.main');
+	    main.forEach(el => el.addEventListener('click', function(){
+	    	alert(this);
+	    });
 // $("#Contacts").click(function(event){
 //      $('#more').toggle(800);
 //    }); 
