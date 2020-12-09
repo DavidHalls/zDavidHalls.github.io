@@ -1,15 +1,29 @@
 <!doctype html>
 <html>
+ <?php
+ header("Access-Control-Allow-Origin: *");
+?>
 <head>
+
     <meta charset="utf-8">
     <title>30 days of JavaScript</title>
     <link rel="stylesheet" href="../2470/HomePage/js/bootstrap.min.js">
     <link rel="stylesheet" href="../2470/HomePage/js/bootstrap.js">
     <link rel="stylesheet" href="../2470/HomePage/css/custom.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch-jsonp/1.0.6/fetch-jsonp.min.js">
+alert('me');	
+
+fetchJsonp('http://localhost:3000')
+  .then(res => res.json())
+  .then(json => console.log(json));
+
+</script> 
+    
 </head>
 
     <style>
+	
         li{
             list-style: none;
             margin-left: auto;
@@ -32,24 +46,88 @@
             background-color: white;
         }
         .list{
+            max-width: 75px;
+            display: flex;
+            flex-direction:row;
+        }
+        
+        .aBtn{
+            height: 5px;
+            padding: 2px;
+            border: 1px solid black;
+            background-color: white;
+            padding: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+/*            display: flex;*/
+        }
+        
+        .test{
+/*            display: flex;*/
+            flex-direction: row;
             width: 75%;
+            max-width: 85%;
+/*            flex: 1;*/
+        }
+        .links{
+            
+/*
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+*/
+            min-width: 150px;
+/*            width: 300px;*/
+            max-width: 300px;
+            background-color: white;
+            text-decoration: none;
+            box-shadow: 1px 1px gray, 2px 2px gray, 3px 3px gray, 4px 4px 4px black, 5px 5px black;
+            margin-top: 9px;
+            text-decoration: none;
+            padding: 3px;
+            margin-left: 8px;
+        }
+        
+        .links:hover {
+              /* 	background: #33a6cc; */
+              box-shadow: none;
+              margin-bottom: -10px;
+              color: black;
+            margin-left: 11px;
+              margin-top: 13px;
+              transition: all 0.5s ease;
+}
+        a{
+/*            display: flex;*/
+/*            flex: 1;*/
+            min-width: 150px;
+            width: 300px;
+            max-width: 300px;
+            background-color: white;
+            text-decoration: none;
+/*            box-shadow: 1px 1px gray, 2px 2px gray, 3px 3px gray, 4px 4px 4px black, 5px 5px black;*/
+            margin-top: 9px;
+            text-decoration: none;          
         }
         
     </style>
 
 <body style="background:#617487">
     <div class="container">
-        <div class="test"></div>
+        <div class="list"></div>
+<!--
             <ul class="list">
             </ul>
+-->
         </div>        
 </body>
 </html>
 
 <script>
+
+
     const list = document.querySelector('.list');
     const test = document.querySelector('.test');
-    const btn = document.querySelectorAll('button');
       var urls = [];
       let arr = [];
       const getTitle = (url) => {  
@@ -62,7 +140,7 @@
       return title.textContent;
     });
 };
-//    alert(btn);
+   //alert(btn);
     for(let i = 0; i < 29; i++){
         urls.push('https://davidhalls.github.io/Java30/'+i+'/');           
     }
@@ -70,7 +148,7 @@
    let promA = Promise.all(
   urls.map((url) => getTitle(url))
 ).then((titles) => {
-//  console.log(titles);   
+  console.log(titles);   
        let varX;
        for(var i = 0; i < urls.length - 1; i++){   
            if(titles[i].length > 30){
@@ -83,8 +161,8 @@
            }else{
                varX = titles[i];
            }
-           document.getElementById('test_'+i).textContent = varX;
-           console.log(varX.includes('GitHub'));
+           document.getElementById('test_'+i).innerHTML = varX;
+//           console.log(varX.includes('GitHub'));
            
            if(varX.includes('GitHub')){
                document.getElementById('test_'+i).parentNode.remove();
@@ -95,49 +173,21 @@
 });
     let x;
     for(var i = 0; i < urls.length - 1; i++){
-        list.innerHTML += "<button><a href='../Java30/"+ i + "/index.html' id=test_"+ i + ">"+ i +" </a></button>";            
-//        setText(i);
-//        console.log(getTitle(urls[i]));
+        list.innerHTML += "<div class='links'><a href='../Java30/"+ i + "/index.html' id=test_"+ i + ">"+ i +"</a></div>";       
     }
-//    console.log(promA);
-    const btn1 = document.getElementById('test_1');
     
-    function setText(title, id){
-       test.textContent +=  title;
-        console.log(title);
-        if(title == "" || title == null){
-            
-        }else{            
-//        document.getElementById('test_'+id).textContent = title;
-        }
-//        arr.push(getTitle(urls[id]));
-//        then(function(result){
-//            console.log(x);
-//        })
-//        console.log(x);
-    }
-    x = promA.then(function(result){
-       
-    })
-//    console.log(x);
-//    alert(arr[5].PromiseValue);
-//    console.log(arr, arr.length);
-//    x.then(function(result) {
-//        console.log(result);
-//    // here you can use the result of promiseB
-//});
-//  urls.map((url) => getTitle(url))
-//).then((titles) => {
-//  console.log(titles);     
-//});
-//    console.log(arr, arr[5]);
-//    for(let i = 0; i < 29; i++){        
-//     list.innerHTML += "<button><a href='../Java30/"+ i + "/index.html'>"+ i +"</a>";   
-//        
-//    }
-    test.textContent += arr;
-//    console.log(arr, arr.length, urls.length);
-//    document.reload(5);
+   
+    
+    const links = document.querySelectorAll('.links');
+    
+     links.forEach(link => link.addEventListener('mouseover', function(){
+         link.classList.add('active');
+//         alert('this');
+     }));
+    links.forEach(link => link.addEventListener('mouseout', function(){
+         link.classList.remove('active');
+//         alert('this');
+     }));
 </script>
 
 
